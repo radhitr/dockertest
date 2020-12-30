@@ -6,3 +6,16 @@ before_install:
   - docker build -t radhitr/dockertest -f Dockerfile.dev .
 script:
   - docker run radhitr/dockertest npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "Dockertest"
+  env: "Dockertest-env"
+  bucket_name: "elasticbeanstalk-us-west-2-316597545477"
+  bucket_path: "Dockertest"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
