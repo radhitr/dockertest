@@ -3,6 +3,6 @@ services:
   - docker
 
 before_install:
-  - docker build -t radhitr/docker -f Dockerfile.dev .
+  - docker build -t radhitr/dockertest -f Dockerfile.dev .
 script:
-  - docker run radhitr/docker npm run test -- --coverage
+  - docker run radhitr/dockertest npm run test -- --coverage
