@@ -5,7 +5,7 @@ services:
 before_install:
   - docker build -t radhitr/dockertest -f Dockerfile.dev .
 script:
-  - docker run radhitr/dockertest npm run test -- --coverage
+  - docker run -e CI=true radhitr/dockertest npm run test -- --coverage
 
 deploy:
   provider: elasticbeanstalk
